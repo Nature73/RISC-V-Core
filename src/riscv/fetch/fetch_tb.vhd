@@ -48,9 +48,41 @@ begin
   begin
   
     -- Put initialisation code here
+    resetn <= '0';
+    enable_f <= '0';
+    enable_m <= '0';
+    jumpOrBranchAddress <= (others => '0');
+    jumpOrBranch <= '0';
 
 
     -- Put test bench stimulus code here
+    wait for 22 ns;
+    resetn <= '1';
+    wait for 20 ns;
+    enable_f <= '1';
+    wait for 100 ns;
+    enable_f <= '0';
+    enable_m <= '1';
+    jumpOrBranch <= '1';
+    jumpOrBranchAddress <= x"00000010";
+    wait for 20 ns;
+    enable_m <= '0';
+    enable_f <= '1';
+    wait for 100 ns;
+    enable_f <= '0';
+    resetn <= '0';
+    wait for 20 ns;
+    resetn <= '1';
+    enable_f <= '1';
+    wait for 100 ns;
+    enable_f <= '0';
+    enable_m <= '1';
+    jumpOrBranch <= '1';
+    jumpOrBranchAddress <= x"00001000";
+    wait for 20 ns;
+    enable_m <= '0';
+    enable_f <= '1';
+    wait for 100 ns;
 
     stop_the_clock <= true;
     wait;

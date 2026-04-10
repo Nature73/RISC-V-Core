@@ -21,15 +21,21 @@ architecture arch of fetch is
 
 begin
 
-   --
-   --
-   --
-   --
-   --
-   --
-   --
-   --
-   --
+   process(CLK, resetn)
+   begin
+      if resetn = '0' then
+         pc_addr <= (others => '0');
+      elsif rising_edge(CLK) then
+         if enable_f = '1' then
+            pc_addr <= pc_addr + 4;
+         elsif enable_m = '1' and jumpOrBranch = '1' then
+            pc_addr <= UNSIGNED(jumpOrBranchAddress);
+         end if;
+      end if;
+   end process;
+
+   pc_value <= STD_LOGIC_VECTOR(pc_addr);
+
    
 end arch;
  

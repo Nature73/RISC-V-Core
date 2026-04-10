@@ -43,16 +43,34 @@ architecture arch of decoder is
     SIGNAL isJALR_s : STD_LOGIC;
 
 begin
+
+    isLoad_o      <= '1' when (instr_i(6 downto 0) = "0000011") else '0';
+    isStore_o     <= '1' when (instr_i(6 downto 0) = "0100011") else '0';
+    isALUreg_o    <= '1' when (instr_i(6 downto 0) = "0110011") else '0';
+    isBranch_o    <= '1' when (instr_i(6 downto 0) = "1100011") else '0';
+    isSYSTEM_o    <= '1' when (instr_i(6 downto 0) = "1110011") else '0';
+    isJAL_o       <= '1' when (instr_i(6 downto 0) = "1101111") else '0';
+    isJALR_o      <= '1' when (instr_i(6 downto 0) = "1100111") else '0';
+    isJALorJALR_o <= (isJAL_o or isJALR_o);
+    isAuipc_o     <= '1' when (instr_i(6 downto 0) = "0010111") else '0';
+    isLui_o       <= '1' when (instr_i(6 downto 0) = "0110111") else '0';
+    isCustom_o    <= '1' when (instr_i(6 downto 0) = "0101111") else '0';
+    isCSRRS_o     <= instr_is_csrrs(instr_i);
+    isEBreak_o    <= '1' when (instr_i(6 downto 0) = "1110011") else '0';
+
+    funct3_o      <= instr_i(14 downto 12);
+    funct7_o      <= instr_i(31 downto 25);
+
+    isByte_o      <= '1' when (funct3_o(1 downto 0) = "00") else '0';
+    isHalf_o      <= '1' when (funct3_o(1 downto 0) = "01") else '0';
+
+    rs1_o         <= instr_i(19 downto 15);
+    rs2_o         <= instr_i(24 downto 20);
+    rdId_o        <= instr_i(11 downto 7);
+    csrId_o       <= instr_i(27) & instr_i(21);
+
    
-   --
-   --
-   --
-   --
-   --
-   --
-   --
-   --
-   --
+
 
 end arch;
  

@@ -7,7 +7,7 @@
 #RV_RANLIB=riscv64-elf-ranlib
 
 # LINUX
-RV_GCC=riscv64-linux-gnu-gcc-12
+RV_GCC=riscv64-linux-gnu-gcc-13
 RV_AS=riscv64-linux-gnu-as
 RV_AR=riscv64-linux-gnu-ar
 RV_LD=riscv64-linux-gnu-ld

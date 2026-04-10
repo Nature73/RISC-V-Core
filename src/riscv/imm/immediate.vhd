@@ -44,14 +44,14 @@ architecture arch of immediate is
 
 begin
 
-   --
-   --
-   --
-   --
-   --
-   --
-   --
-   --
-   --
-   
+    Iimm <= repeat_bit(instr(31),20) & instr(31 downto 20);
+    Simm <= repeat_bit(instr(31),20) & instr(31 downto 25) & instr(11 downto 7);
+    Bimm <= repeat_bit(instr(31),19) & instr(31) & instr(7) & instr(30 downto 25) & instr(11 downto 8) & '0';
+    Jimm <= repeat_bit(instr(31),11) & instr(31) & instr(20) & instr(19 downto 12) & instr(30 downto 21)  & '0';
+    Uimm <= instr(31 downto 12) & repeat_bit('0',12);
+
+
+
+    imm  <= Simm when(isStore = '1') else Bimm when(isbranch = '1') else Jimm when(isjal ='1') else Uimm when (islui = '1' or isauipc ='1') else Iimm;
+
 end arch;

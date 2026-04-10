@@ -39,15 +39,17 @@ architecture arch of registers is
 
 begin
 
-   --
-   --
-   --
-   --
-   --
-   --
-   --
-   --
-   --
+   process(CLOCK)
+   begin
+      if rising_edge(CLOCK) then
+         if RD_id_we = '1' then
+            registerFile(to_integer(unsigned(RD_id))) <= DATA_rd;
+         end if;
+      end if;
+   end process;
+
+   DATA_rs1 <= registerFile(to_integer(unsigned(RS1_id)));
+   DATA_rs2 <= registerFile(to_integer(unsigned(RS2_id)));
    
 end arch;
  
