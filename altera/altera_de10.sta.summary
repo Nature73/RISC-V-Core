@@ -1,0 +1,173 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'riscv:CPU|EM_isByte'
+Slack : -14.236
+TNS   : -430.792
+
+Type  : Slow 1200mV 85C Model Setup 'riscv:CPU|DE_funct3[0]'
+Slack : -13.482
+TNS   : -396.613
+
+Type  : Slow 1200mV 85C Model Setup 'riscv:CPU|DE_funct3[1]'
+Slack : -12.979
+TNS   : -392.635
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK'
+Slack : -11.336
+TNS   : -6582.413
+
+Type  : Slow 1200mV 85C Model Hold 'riscv:CPU|DE_funct3[1]'
+Slack : -1.537
+TNS   : -7.756
+
+Type  : Slow 1200mV 85C Model Hold 'riscv:CPU|DE_funct3[0]'
+Slack : -1.151
+TNS   : -4.156
+
+Type  : Slow 1200mV 85C Model Hold 'riscv:CPU|EM_isByte'
+Slack : 0.095
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK'
+Slack : 0.158
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'CLOCK'
+Slack : -0.933
+TNS   : -23.241
+
+Type  : Slow 1200mV 85C Model Removal 'CLOCK'
+Slack : 1.140
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK'
+Slack : -3.000
+TNS   : -1929.641
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'riscv:CPU|DE_funct3[1]'
+Slack : -0.050
+TNS   : -1.436
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'riscv:CPU|DE_funct3[0]'
+Slack : 0.384
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'riscv:CPU|EM_isByte'
+Slack : 0.463
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'riscv:CPU|EM_isByte'
+Slack : -13.107
+TNS   : -397.128
+
+Type  : Slow 1200mV 0C Model Setup 'riscv:CPU|DE_funct3[0]'
+Slack : -12.810
+TNS   : -376.841
+
+Type  : Slow 1200mV 0C Model Setup 'riscv:CPU|DE_funct3[1]'
+Slack : -12.267
+TNS   : -370.530
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK'
+Slack : -10.276
+TNS   : -5946.730
+
+Type  : Slow 1200mV 0C Model Hold 'riscv:CPU|DE_funct3[1]'
+Slack : -1.366
+TNS   : -6.358
+
+Type  : Slow 1200mV 0C Model Hold 'riscv:CPU|DE_funct3[0]'
+Slack : -1.003
+TNS   : -3.219
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK'
+Slack : 0.029
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'riscv:CPU|EM_isByte'
+Slack : 0.183
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'CLOCK'
+Slack : -0.809
+TNS   : -19.018
+
+Type  : Slow 1200mV 0C Model Removal 'CLOCK'
+Slack : 1.039
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK'
+Slack : -3.000
+TNS   : -1900.445
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'riscv:CPU|DE_funct3[1]'
+Slack : -0.090
+TNS   : -3.973
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'riscv:CPU|DE_funct3[0]'
+Slack : 0.280
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'riscv:CPU|EM_isByte'
+Slack : 0.425
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'riscv:CPU|EM_isByte'
+Slack : -5.628
+TNS   : -165.536
+
+Type  : Fast 1200mV 0C Model Setup 'riscv:CPU|DE_funct3[0]'
+Slack : -5.618
+TNS   : -157.604
+
+Type  : Fast 1200mV 0C Model Setup 'riscv:CPU|DE_funct3[1]'
+Slack : -5.168
+TNS   : -147.847
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK'
+Slack : -4.355
+TNS   : -2289.307
+
+Type  : Fast 1200mV 0C Model Hold 'riscv:CPU|DE_funct3[1]'
+Slack : -0.868
+TNS   : -7.669
+
+Type  : Fast 1200mV 0C Model Hold 'riscv:CPU|DE_funct3[0]'
+Slack : -0.843
+TNS   : -7.457
+
+Type  : Fast 1200mV 0C Model Hold 'riscv:CPU|EM_isByte'
+Slack : -0.201
+TNS   : -0.241
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK'
+Slack : 0.143
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'CLOCK'
+Slack : 0.103
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'CLOCK'
+Slack : 0.486
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK'
+Slack : -3.000
+TNS   : -1359.015
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'riscv:CPU|DE_funct3[1]'
+Slack : 0.164
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'riscv:CPU|DE_funct3[0]'
+Slack : 0.249
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'riscv:CPU|EM_isByte'
+Slack : 0.416
+TNS   : 0.000
+
+------------------------------------------------------------

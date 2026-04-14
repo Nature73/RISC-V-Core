@@ -51,7 +51,7 @@ begin
     isSYSTEM_o    <= '1' when (instr_i(6 downto 0) = "1110011") else '0';
     isJAL_o       <= '1' when (instr_i(6 downto 0) = "1101111") else '0';
     isJALR_o      <= '1' when (instr_i(6 downto 0) = "1100111") else '0';
-    isJALorJALR_o <= (isJAL_o or isJALR_o);
+    isJALorJALR_o <= '1' when (instr_i(6 downto 0) = "1101111" or instr_i(6 downto 0) = "1100111") else '0' ;
     isAuipc_o     <= '1' when (instr_i(6 downto 0) = "0010111") else '0';
     isLui_o       <= '1' when (instr_i(6 downto 0) = "0110111") else '0';
     isCustom_o    <= '1' when (instr_i(6 downto 0) = "0101111") else '0';
@@ -61,8 +61,8 @@ begin
     funct3_o      <= instr_i(14 downto 12);
     funct7_o      <= instr_i(31 downto 25);
 
-    isByte_o      <= '1' when (funct3_o(1 downto 0) = "00") else '0';
-    isHalf_o      <= '1' when (funct3_o(1 downto 0) = "01") else '0';
+    isByte_o      <= '1' when (instr_i(13 downto 12) = "00") else '0';
+    isHalf_o      <= '1' when (instr_i(13 downto 12) = "01") else '0';
 
     rs1_o         <= instr_i(19 downto 15);
     rs2_o         <= instr_i(24 downto 20);

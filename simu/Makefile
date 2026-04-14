@@ -701,7 +701,7 @@ riscv_altera:
 	find . -name "*.o"           -delete
 
 	# Simulation du modele RTL
-	ghdl -r --std=08 -frelaxed riscv_soc_tb --ieee-asserts=disable --max-stack-alloc=0 --wave=riscv_soc_tb.ghw
+	ghdl -r --std=08 -frelaxed riscv_soc_tb --ieee-asserts=disable --max-stack-alloc=0 #--wave=riscv_soc_tb.ghw
 #
 #
 #
