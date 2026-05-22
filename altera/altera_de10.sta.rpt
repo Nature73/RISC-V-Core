@@ -1,5 +1,5 @@
 Timing Analyzer report for altera_de10
-Tue Apr 14 12:24:11 2026
+Fri Apr 17 14:20:51 2026
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -91,67 +91,56 @@ on the Quartus Prime software download page.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
 ;                            ;             ;
-; Average used               ; 1.67        ;
-; Maximum used               ; 4           ;
+; Average used               ; 2.20        ;
+; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  22.6%      ;
-;     Processor 3            ;  22.5%      ;
-;     Processor 4            ;  22.3%      ;
+;     Processor 2            ;  25.7%      ;
+;     Processor 3            ;  23.9%      ;
+;     Processor 4            ;  23.7%      ;
+;     Processors 5-6         ;  23.5%      ;
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Clocks                                                                                                                                                                                                         ;
-+------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------------------------+
-; Clock Name             ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                    ;
-+------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------------------------+
-; CLOCK                  ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLOCK }                  ;
-; riscv:CPU|DE_funct3[0] ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { riscv:CPU|DE_funct3[0] } ;
-; riscv:CPU|DE_funct3[1] ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { riscv:CPU|DE_funct3[1] } ;
-; riscv:CPU|EM_isByte    ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { riscv:CPU|EM_isByte }    ;
-+------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+----------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                            ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets   ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------+
+; CLOCK      ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { CLOCK } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+-----------+
 
 
-+--------------------------------------------------------------+
-; Slow 1200mV 85C Model Fmax Summary                           ;
-+------------+-----------------+------------------------+------+
-; Fmax       ; Restricted Fmax ; Clock Name             ; Note ;
-+------------+-----------------+------------------------+------+
-; 81.06 MHz  ; 81.06 MHz       ; CLOCK                  ;      ;
-; 86.6 MHz   ; 86.6 MHz        ; riscv:CPU|DE_funct3[0] ;      ;
-; 90.63 MHz  ; 90.63 MHz       ; riscv:CPU|DE_funct3[1] ;      ;
-; 119.67 MHz ; 119.67 MHz      ; riscv:CPU|EM_isByte    ;      ;
-+------------+-----------------+------------------------+------+
++------------------------------------------------+
+; Slow 1200mV 85C Model Fmax Summary             ;
++----------+-----------------+------------+------+
+; Fmax     ; Restricted Fmax ; Clock Name ; Note ;
++----------+-----------------+------------+------+
+; 87.4 MHz ; 87.4 MHz        ; CLOCK      ;      ;
++----------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-+--------------------------------------------------+
-; Slow 1200mV 85C Model Setup Summary              ;
-+------------------------+---------+---------------+
-; Clock                  ; Slack   ; End Point TNS ;
-+------------------------+---------+---------------+
-; riscv:CPU|EM_isByte    ; -14.236 ; -430.792      ;
-; riscv:CPU|DE_funct3[0] ; -13.482 ; -396.613      ;
-; riscv:CPU|DE_funct3[1] ; -12.979 ; -392.635      ;
-; CLOCK                  ; -11.336 ; -6582.413     ;
-+------------------------+---------+---------------+
++-------------------------------------+
+; Slow 1200mV 85C Model Setup Summary ;
++-------+---------+-------------------+
+; Clock ; Slack   ; End Point TNS     ;
++-------+---------+-------------------+
+; CLOCK ; -10.441 ; -7113.555         ;
++-------+---------+-------------------+
 
 
-+-------------------------------------------------+
-; Slow 1200mV 85C Model Hold Summary              ;
-+------------------------+--------+---------------+
-; Clock                  ; Slack  ; End Point TNS ;
-+------------------------+--------+---------------+
-; riscv:CPU|DE_funct3[1] ; -1.537 ; -7.756        ;
-; riscv:CPU|DE_funct3[0] ; -1.151 ; -4.156        ;
-; riscv:CPU|EM_isByte    ; 0.095  ; 0.000         ;
-; CLOCK                  ; 0.158  ; 0.000         ;
-+------------------------+--------+---------------+
++------------------------------------+
+; Slow 1200mV 85C Model Hold Summary ;
++-------+-------+--------------------+
+; Clock ; Slack ; End Point TNS      ;
++-------+-------+--------------------+
+; CLOCK ; 0.324 ; 0.000              ;
++-------+-------+--------------------+
 
 
 +----------------------------------------+
@@ -159,7 +148,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+--------+-----------------------+
 ; Clock ; Slack  ; End Point TNS         ;
 +-------+--------+-----------------------+
-; CLOCK ; -0.933 ; -23.241               ;
+; CLOCK ; -0.552 ; -15.268               ;
 +-------+--------+-----------------------+
 
 
@@ -168,63 +157,52 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+-------+-----------------------+
 ; Clock ; Slack ; End Point TNS         ;
 +-------+-------+-----------------------+
-; CLOCK ; 1.140 ; 0.000                 ;
+; CLOCK ; 0.916 ; 0.000                 ;
 +-------+-------+-----------------------+
 
 
 +---------------------------------------------------+
 ; Slow 1200mV 85C Model Minimum Pulse Width Summary ;
-+------------------------+--------+-----------------+
-; Clock                  ; Slack  ; End Point TNS   ;
-+------------------------+--------+-----------------+
-; CLOCK                  ; -3.000 ; -1929.641       ;
-; riscv:CPU|DE_funct3[1] ; -0.050 ; -1.436          ;
-; riscv:CPU|DE_funct3[0] ; 0.384  ; 0.000           ;
-; riscv:CPU|EM_isByte    ; 0.463  ; 0.000           ;
-+------------------------+--------+-----------------+
++-------+--------+----------------------------------+
+; Clock ; Slack  ; End Point TNS                    ;
++-------+--------+----------------------------------+
+; CLOCK ; -3.000 ; -2093.545                        ;
++-------+--------+----------------------------------+
 
 
 -----------------------------------------------
 ; Slow 1200mV 85C Model Metastability Summary ;
 -----------------------------------------------
-No synchronizer chains to report.
+Design MTBF is not calculated because the design doesn't meet its timing requirements.
 
-
-+-------------------------------------------------------------+
-; Slow 1200mV 0C Model Fmax Summary                           ;
-+-----------+-----------------+------------------------+------+
-; Fmax      ; Restricted Fmax ; Clock Name             ; Note ;
-+-----------+-----------------+------------------------+------+
-; 88.68 MHz ; 88.68 MHz       ; CLOCK                  ;      ;
-; 89.78 MHz ; 89.78 MHz       ; riscv:CPU|DE_funct3[0] ;      ;
-; 95.27 MHz ; 95.27 MHz       ; riscv:CPU|DE_funct3[1] ;      ;
-; 129.2 MHz ; 129.2 MHz       ; riscv:CPU|EM_isByte    ;      ;
-+-----------+-----------------+------------------------+------+
-This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
-
-
-+--------------------------------------------------+
-; Slow 1200mV 0C Model Setup Summary               ;
-+------------------------+---------+---------------+
-; Clock                  ; Slack   ; End Point TNS ;
-+------------------------+---------+---------------+
-; riscv:CPU|EM_isByte    ; -13.107 ; -397.128      ;
-; riscv:CPU|DE_funct3[0] ; -12.810 ; -376.841      ;
-; riscv:CPU|DE_funct3[1] ; -12.267 ; -370.530      ;
-; CLOCK                  ; -10.276 ; -5946.730     ;
-+------------------------+---------+---------------+
 
 
 +-------------------------------------------------+
-; Slow 1200mV 0C Model Hold Summary               ;
-+------------------------+--------+---------------+
-; Clock                  ; Slack  ; End Point TNS ;
-+------------------------+--------+---------------+
-; riscv:CPU|DE_funct3[1] ; -1.366 ; -6.358        ;
-; riscv:CPU|DE_funct3[0] ; -1.003 ; -3.219        ;
-; CLOCK                  ; 0.029  ; 0.000         ;
-; riscv:CPU|EM_isByte    ; 0.183  ; 0.000         ;
-+------------------------+--------+---------------+
+; Slow 1200mV 0C Model Fmax Summary               ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 96.11 MHz ; 96.11 MHz       ; CLOCK      ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++------------------------------------+
+; Slow 1200mV 0C Model Setup Summary ;
++-------+--------+-------------------+
+; Clock ; Slack  ; End Point TNS     ;
++-------+--------+-------------------+
+; CLOCK ; -9.405 ; -6391.110         ;
++-------+--------+-------------------+
+
+
++-----------------------------------+
+; Slow 1200mV 0C Model Hold Summary ;
++-------+-------+-------------------+
+; Clock ; Slack ; End Point TNS     ;
++-------+-------+-------------------+
+; CLOCK ; 0.291 ; 0.000             ;
++-------+-------+-------------------+
 
 
 +---------------------------------------+
@@ -232,7 +210,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+--------+----------------------+
 ; Clock ; Slack  ; End Point TNS        ;
 +-------+--------+----------------------+
-; CLOCK ; -0.809 ; -19.018              ;
+; CLOCK ; -0.436 ; -11.385              ;
 +-------+--------+----------------------+
 
 
@@ -241,50 +219,42 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+-------+----------------------+
 ; Clock ; Slack ; End Point TNS        ;
 +-------+-------+----------------------+
-; CLOCK ; 1.039 ; 0.000                ;
+; CLOCK ; 0.811 ; 0.000                ;
 +-------+-------+----------------------+
 
 
 +--------------------------------------------------+
 ; Slow 1200mV 0C Model Minimum Pulse Width Summary ;
-+------------------------+--------+----------------+
-; Clock                  ; Slack  ; End Point TNS  ;
-+------------------------+--------+----------------+
-; CLOCK                  ; -3.000 ; -1900.445      ;
-; riscv:CPU|DE_funct3[1] ; -0.090 ; -3.973         ;
-; riscv:CPU|DE_funct3[0] ; 0.280  ; 0.000          ;
-; riscv:CPU|EM_isByte    ; 0.425  ; 0.000          ;
-+------------------------+--------+----------------+
++-------+--------+---------------------------------+
+; Clock ; Slack  ; End Point TNS                   ;
++-------+--------+---------------------------------+
+; CLOCK ; -3.000 ; -2061.630                       ;
++-------+--------+---------------------------------+
 
 
 ----------------------------------------------
 ; Slow 1200mV 0C Model Metastability Summary ;
 ----------------------------------------------
-No synchronizer chains to report.
+Design MTBF is not calculated because the design doesn't meet its timing requirements.
 
 
-+-------------------------------------------------+
-; Fast 1200mV 0C Model Setup Summary              ;
-+------------------------+--------+---------------+
-; Clock                  ; Slack  ; End Point TNS ;
-+------------------------+--------+---------------+
-; riscv:CPU|EM_isByte    ; -5.628 ; -165.536      ;
-; riscv:CPU|DE_funct3[0] ; -5.618 ; -157.604      ;
-; riscv:CPU|DE_funct3[1] ; -5.168 ; -147.847      ;
-; CLOCK                  ; -4.355 ; -2289.307     ;
-+------------------------+--------+---------------+
+
++------------------------------------+
+; Fast 1200mV 0C Model Setup Summary ;
++-------+--------+-------------------+
+; Clock ; Slack  ; End Point TNS     ;
++-------+--------+-------------------+
+; CLOCK ; -4.061 ; -2460.497         ;
++-------+--------+-------------------+
 
 
-+-------------------------------------------------+
-; Fast 1200mV 0C Model Hold Summary               ;
-+------------------------+--------+---------------+
-; Clock                  ; Slack  ; End Point TNS ;
-+------------------------+--------+---------------+
-; riscv:CPU|DE_funct3[1] ; -0.868 ; -7.669        ;
-; riscv:CPU|DE_funct3[0] ; -0.843 ; -7.457        ;
-; riscv:CPU|EM_isByte    ; -0.201 ; -0.241        ;
-; CLOCK                  ; 0.143  ; 0.000         ;
-+------------------------+--------+---------------+
++-----------------------------------+
+; Fast 1200mV 0C Model Hold Summary ;
++-------+-------+-------------------+
+; Clock ; Slack ; End Point TNS     ;
++-------+-------+-------------------+
+; CLOCK ; 0.142 ; 0.000             ;
++-------+-------+-------------------+
 
 
 +---------------------------------------+
@@ -292,7 +262,7 @@ No synchronizer chains to report.
 +-------+-------+-----------------------+
 ; Clock ; Slack ; End Point TNS         ;
 +-------+-------+-----------------------+
-; CLOCK ; 0.103 ; 0.000                 ;
+; CLOCK ; 0.271 ; 0.000                 ;
 +-------+-------+-----------------------+
 
 
@@ -301,44 +271,36 @@ No synchronizer chains to report.
 +-------+-------+----------------------+
 ; Clock ; Slack ; End Point TNS        ;
 +-------+-------+----------------------+
-; CLOCK ; 0.486 ; 0.000                ;
+; CLOCK ; 0.393 ; 0.000                ;
 +-------+-------+----------------------+
 
 
 +--------------------------------------------------+
 ; Fast 1200mV 0C Model Minimum Pulse Width Summary ;
-+------------------------+--------+----------------+
-; Clock                  ; Slack  ; End Point TNS  ;
-+------------------------+--------+----------------+
-; CLOCK                  ; -3.000 ; -1359.015      ;
-; riscv:CPU|DE_funct3[1] ; 0.164  ; 0.000          ;
-; riscv:CPU|DE_funct3[0] ; 0.249  ; 0.000          ;
-; riscv:CPU|EM_isByte    ; 0.416  ; 0.000          ;
-+------------------------+--------+----------------+
++-------+--------+---------------------------------+
+; Clock ; Slack  ; End Point TNS                   ;
++-------+--------+---------------------------------+
+; CLOCK ; -3.000 ; -1468.407                       ;
++-------+--------+---------------------------------+
 
 
 ----------------------------------------------
 ; Fast 1200mV 0C Model Metastability Summary ;
 ----------------------------------------------
-No synchronizer chains to report.
+Design MTBF is not calculated because the design doesn't meet its timing requirements.
 
 
-+------------------------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                                      ;
-+-------------------------+-----------+---------+----------+---------+---------------------+
-; Clock                   ; Setup     ; Hold    ; Recovery ; Removal ; Minimum Pulse Width ;
-+-------------------------+-----------+---------+----------+---------+---------------------+
-; Worst-case Slack        ; -14.236   ; -1.537  ; -0.933   ; 0.486   ; -3.000              ;
-;  CLOCK                  ; -11.336   ; 0.029   ; -0.933   ; 0.486   ; -3.000              ;
-;  riscv:CPU|DE_funct3[0] ; -13.482   ; -1.151  ; N/A      ; N/A     ; 0.249               ;
-;  riscv:CPU|DE_funct3[1] ; -12.979   ; -1.537  ; N/A      ; N/A     ; -0.090              ;
-;  riscv:CPU|EM_isByte    ; -14.236   ; -0.201  ; N/A      ; N/A     ; 0.416               ;
-; Design-wide TNS         ; -7802.453 ; -15.367 ; -23.241  ; 0.0     ; -1931.077           ;
-;  CLOCK                  ; -6582.413 ; 0.000   ; -23.241  ; 0.000   ; -1929.641           ;
-;  riscv:CPU|DE_funct3[0] ; -396.613  ; -7.457  ; N/A      ; N/A     ; 0.000               ;
-;  riscv:CPU|DE_funct3[1] ; -392.635  ; -7.756  ; N/A      ; N/A     ; -3.973              ;
-;  riscv:CPU|EM_isByte    ; -430.792  ; -0.241  ; N/A      ; N/A     ; 0.000               ;
-+-------------------------+-----------+---------+----------+---------+---------------------+
+
++---------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                             ;
++------------------+-----------+-------+----------+---------+---------------------+
+; Clock            ; Setup     ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+-----------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -10.441   ; 0.142 ; -0.552   ; 0.393   ; -3.000              ;
+;  CLOCK           ; -10.441   ; 0.142 ; -0.552   ; 0.393   ; -3.000              ;
+; Design-wide TNS  ; -7113.555 ; 0.0   ; -15.268  ; 0.0     ; -2093.545           ;
+;  CLOCK           ; -7113.555 ; 0.000 ; -15.268  ; 0.000   ; -2093.545           ;
++------------------+-----------+-------+----------+---------+---------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -450,45 +412,23 @@ No synchronizer chains to report.
 +--------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 
 
-+---------------------------------------------------------------------------------------------+
-; Setup Transfers                                                                             ;
-+------------------------+------------------------+----------+----------+----------+----------+
-; From Clock             ; To Clock               ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
-+------------------------+------------------------+----------+----------+----------+----------+
-; CLOCK                  ; CLOCK                  ; 1229348  ; 0        ; 0        ; 0        ;
-; riscv:CPU|DE_funct3[0] ; CLOCK                  ; 32       ; 32       ; 0        ; 0        ;
-; riscv:CPU|DE_funct3[1] ; CLOCK                  ; 33       ; 0        ; 0        ; 0        ;
-; riscv:CPU|EM_isByte    ; CLOCK                  ; 32       ; 0        ; 0        ; 0        ;
-; CLOCK                  ; riscv:CPU|DE_funct3[0] ; 216586   ; 0        ; 216586   ; 0        ;
-; riscv:CPU|DE_funct3[0] ; riscv:CPU|DE_funct3[0] ; 1376     ; 1376     ; 1376     ; 1376     ;
-; riscv:CPU|DE_funct3[1] ; riscv:CPU|DE_funct3[0] ; 1372     ; 1372     ; 1372     ; 1372     ;
-; CLOCK                  ; riscv:CPU|DE_funct3[1] ; 110983   ; 0        ; 0        ; 0        ;
-; riscv:CPU|DE_funct3[0] ; riscv:CPU|DE_funct3[1] ; 690      ; 690      ; 0        ; 0        ;
-; riscv:CPU|DE_funct3[1] ; riscv:CPU|DE_funct3[1] ; 687      ; 687      ; 0        ; 0        ;
-; CLOCK                  ; riscv:CPU|EM_isByte    ; 1124000  ; 0        ; 0        ; 0        ;
-; riscv:CPU|EM_isByte    ; riscv:CPU|EM_isByte    ; 96       ; 96       ; 0        ; 0        ;
-+------------------------+------------------------+----------+----------+----------+----------+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLOCK      ; CLOCK    ; 227424   ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
-+---------------------------------------------------------------------------------------------+
-; Hold Transfers                                                                              ;
-+------------------------+------------------------+----------+----------+----------+----------+
-; From Clock             ; To Clock               ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
-+------------------------+------------------------+----------+----------+----------+----------+
-; CLOCK                  ; CLOCK                  ; 1229348  ; 0        ; 0        ; 0        ;
-; riscv:CPU|DE_funct3[0] ; CLOCK                  ; 32       ; 32       ; 0        ; 0        ;
-; riscv:CPU|DE_funct3[1] ; CLOCK                  ; 33       ; 0        ; 0        ; 0        ;
-; riscv:CPU|EM_isByte    ; CLOCK                  ; 32       ; 0        ; 0        ; 0        ;
-; CLOCK                  ; riscv:CPU|DE_funct3[0] ; 216586   ; 0        ; 216586   ; 0        ;
-; riscv:CPU|DE_funct3[0] ; riscv:CPU|DE_funct3[0] ; 1376     ; 1376     ; 1376     ; 1376     ;
-; riscv:CPU|DE_funct3[1] ; riscv:CPU|DE_funct3[0] ; 1372     ; 1372     ; 1372     ; 1372     ;
-; CLOCK                  ; riscv:CPU|DE_funct3[1] ; 110983   ; 0        ; 0        ; 0        ;
-; riscv:CPU|DE_funct3[0] ; riscv:CPU|DE_funct3[1] ; 690      ; 690      ; 0        ; 0        ;
-; riscv:CPU|DE_funct3[1] ; riscv:CPU|DE_funct3[1] ; 687      ; 687      ; 0        ; 0        ;
-; CLOCK                  ; riscv:CPU|EM_isByte    ; 1124000  ; 0        ; 0        ; 0        ;
-; riscv:CPU|EM_isByte    ; riscv:CPU|EM_isByte    ; 96       ; 96       ; 0        ; 0        ;
-+------------------------+------------------------+----------+----------+----------+----------+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; CLOCK      ; CLOCK    ; 227424   ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
 
@@ -538,16 +478,13 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 
 
-+----------------------------------------------------------------------+
-; Clock Status Summary                                                 ;
-+------------------------+------------------------+------+-------------+
-; Target                 ; Clock                  ; Type ; Status      ;
-+------------------------+------------------------+------+-------------+
-; CLOCK                  ; CLOCK                  ; Base ; Constrained ;
-; riscv:CPU|DE_funct3[0] ; riscv:CPU|DE_funct3[0] ; Base ; Constrained ;
-; riscv:CPU|DE_funct3[1] ; riscv:CPU|DE_funct3[1] ; Base ; Constrained ;
-; riscv:CPU|EM_isByte    ; riscv:CPU|EM_isByte    ; Base ; Constrained ;
-+------------------------+------------------------+------+-------------+
++-------------------------------------+
+; Clock Status Summary                ;
++--------+-------+------+-------------+
+; Target ; Clock ; Type ; Status      ;
++--------+-------+------+-------------+
+; CLOCK  ; CLOCK ; Base ; Constrained ;
++--------+-------+------+-------------+
 
 
 +---------------------------------------------------------------------------------------------------+
@@ -636,134 +573,103 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Tue Apr 14 12:24:03 2026
+    Info: Processing started: Fri Apr 17 14:20:46 2026
 Info: Command: quartus_sta altera_de10 -c altera_de10
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
-Warning (335093): The Timing Analyzer is analyzing 65 combinational loops as latches. For more details, run the Check Timing command in the Timing Analyzer or view the "User-Specified and Inferred Latches" table in the Analysis & Synthesis report.
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'altera_de10.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name CLOCK CLOCK
-    Info (332105): create_clock -period 1.000 -name riscv:CPU|EM_isByte riscv:CPU|EM_isByte
-    Info (332105): create_clock -period 1.000 -name riscv:CPU|DE_funct3[0] riscv:CPU|DE_funct3[0]
-    Info (332105): create_clock -period 1.000 -name riscv:CPU|DE_funct3[1] riscv:CPU|DE_funct3[1]
-Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
-    Info (332098): Cell: CPU|i_alu|aluOut_v[31]~120  from: dataa  to: combout
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 85C Model
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -14.236
+Info (332146): Worst-case setup slack is -10.441
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -14.236            -430.792 riscv:CPU|EM_isByte 
-    Info (332119):   -13.482            -396.613 riscv:CPU|DE_funct3[0] 
-    Info (332119):   -12.979            -392.635 riscv:CPU|DE_funct3[1] 
-    Info (332119):   -11.336           -6582.413 CLOCK 
-Info (332146): Worst-case hold slack is -1.537
+    Info (332119):   -10.441           -7113.555 CLOCK 
+Info (332146): Worst-case hold slack is 0.324
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.537              -7.756 riscv:CPU|DE_funct3[1] 
-    Info (332119):    -1.151              -4.156 riscv:CPU|DE_funct3[0] 
-    Info (332119):     0.095               0.000 riscv:CPU|EM_isByte 
-    Info (332119):     0.158               0.000 CLOCK 
-Info (332146): Worst-case recovery slack is -0.933
+    Info (332119):     0.324               0.000 CLOCK 
+Info (332146): Worst-case recovery slack is -0.552
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.933             -23.241 CLOCK 
-Info (332146): Worst-case removal slack is 1.140
+    Info (332119):    -0.552             -15.268 CLOCK 
+Info (332146): Worst-case removal slack is 0.916
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.140               0.000 CLOCK 
+    Info (332119):     0.916               0.000 CLOCK 
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000           -1929.641 CLOCK 
-    Info (332119):    -0.050              -1.436 riscv:CPU|DE_funct3[1] 
-    Info (332119):     0.384               0.000 riscv:CPU|DE_funct3[0] 
-    Info (332119):     0.463               0.000 riscv:CPU|EM_isByte 
+    Info (332119):    -3.000           -2093.545 CLOCK 
+Info (332114): Report Metastability: Found 1 synchronizer chains.
+    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Slow 1200mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
-    Info (332098): Cell: CPU|i_alu|aluOut_v[31]~120  from: dataa  to: combout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -13.107
+Info (332146): Worst-case setup slack is -9.405
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -13.107            -397.128 riscv:CPU|EM_isByte 
-    Info (332119):   -12.810            -376.841 riscv:CPU|DE_funct3[0] 
-    Info (332119):   -12.267            -370.530 riscv:CPU|DE_funct3[1] 
-    Info (332119):   -10.276           -5946.730 CLOCK 
-Info (332146): Worst-case hold slack is -1.366
+    Info (332119):    -9.405           -6391.110 CLOCK 
+Info (332146): Worst-case hold slack is 0.291
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.366              -6.358 riscv:CPU|DE_funct3[1] 
-    Info (332119):    -1.003              -3.219 riscv:CPU|DE_funct3[0] 
-    Info (332119):     0.029               0.000 CLOCK 
-    Info (332119):     0.183               0.000 riscv:CPU|EM_isByte 
-Info (332146): Worst-case recovery slack is -0.809
+    Info (332119):     0.291               0.000 CLOCK 
+Info (332146): Worst-case recovery slack is -0.436
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.809             -19.018 CLOCK 
-Info (332146): Worst-case removal slack is 1.039
+    Info (332119):    -0.436             -11.385 CLOCK 
+Info (332146): Worst-case removal slack is 0.811
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.039               0.000 CLOCK 
+    Info (332119):     0.811               0.000 CLOCK 
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000           -1900.445 CLOCK 
-    Info (332119):    -0.090              -3.973 riscv:CPU|DE_funct3[1] 
-    Info (332119):     0.280               0.000 riscv:CPU|DE_funct3[0] 
-    Info (332119):     0.425               0.000 riscv:CPU|EM_isByte 
+    Info (332119):    -3.000           -2061.630 CLOCK 
+Info (332114): Report Metastability: Found 1 synchronizer chains.
+    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Fast 1200mV 0C Model
-Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
-    Info (332098): Cell: CPU|i_alu|aluOut_v[31]~120  from: dataa  to: combout
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -5.628
+Info (332146): Worst-case setup slack is -4.061
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -5.628            -165.536 riscv:CPU|EM_isByte 
-    Info (332119):    -5.618            -157.604 riscv:CPU|DE_funct3[0] 
-    Info (332119):    -5.168            -147.847 riscv:CPU|DE_funct3[1] 
-    Info (332119):    -4.355           -2289.307 CLOCK 
-Info (332146): Worst-case hold slack is -0.868
+    Info (332119):    -4.061           -2460.497 CLOCK 
+Info (332146): Worst-case hold slack is 0.142
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.868              -7.669 riscv:CPU|DE_funct3[1] 
-    Info (332119):    -0.843              -7.457 riscv:CPU|DE_funct3[0] 
-    Info (332119):    -0.201              -0.241 riscv:CPU|EM_isByte 
-    Info (332119):     0.143               0.000 CLOCK 
-Info (332146): Worst-case recovery slack is 0.103
+    Info (332119):     0.142               0.000 CLOCK 
+Info (332146): Worst-case recovery slack is 0.271
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.103               0.000 CLOCK 
-Info (332146): Worst-case removal slack is 0.486
+    Info (332119):     0.271               0.000 CLOCK 
+Info (332146): Worst-case removal slack is 0.393
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.486               0.000 CLOCK 
+    Info (332119):     0.393               0.000 CLOCK 
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000           -1359.015 CLOCK 
-    Info (332119):     0.164               0.000 riscv:CPU|DE_funct3[1] 
-    Info (332119):     0.249               0.000 riscv:CPU|DE_funct3[0] 
-    Info (332119):     0.416               0.000 riscv:CPU|EM_isByte 
+    Info (332119):    -3.000           -1468.407 CLOCK 
+Info (332114): Report Metastability: Found 1 synchronizer chains.
+    Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
-Info: Quartus Prime Timing Analyzer was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 563 megabytes
-    Info: Processing ended: Tue Apr 14 12:24:11 2026
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:09
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 603 megabytes
+    Info: Processing ended: Fri Apr 17 14:20:51 2026
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:06
 
 

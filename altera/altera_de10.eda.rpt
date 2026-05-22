@@ -1,5 +1,5 @@
 EDA Netlist Writer report for altera_de10
-Tue Apr 14 12:24:14 2026
+Fri Apr 17 14:20:55 2026
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -37,7 +37,7 @@ on the Quartus Prime software download page.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Tue Apr 14 12:24:14 2026 ;
+; EDA Netlist Writer Status ; Successful - Fri Apr 17 14:20:55 2026 ;
 ; Revision Name             ; altera_de10                           ;
 ; Top-level Entity Name     ; riscv_soc_altera                      ;
 ; Family                    ; MAX 10                                ;
@@ -81,14 +81,14 @@ on the Quartus Prime software download page.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Tue Apr 14 12:24:12 2026
+    Info: Processing started: Fri Apr 17 14:20:52 2026
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off altera_de10 -c altera_de10
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file altera_de10.vo in folder "/users/elo/candre/Documents/RISC-V/enssat-2a-riscv-design-student/altera/simulation/questa/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 623 megabytes
-    Info: Processing ended: Tue Apr 14 12:24:14 2026
-    Info: Elapsed time: 00:00:02
+    Info: Processing ended: Fri Apr 17 14:20:55 2026
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:01
 
 

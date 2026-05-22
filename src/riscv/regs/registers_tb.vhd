@@ -57,7 +57,6 @@ begin
     RESET <= '0';
     wait for clock_period;
 
-<<<<<<< HEAD
     rs1_id <= "00000";
     rs2_id <= "00000";
     rd_id <= "00000";
@@ -91,7 +90,6 @@ begin
     end loop;
     
 
-=======
     ------------------------------------------------------
     -- On intialise les registres
     ------------------------------------------------------
@@ -425,7 +423,6 @@ begin
     assert(DATA_rs2  =  x"0000001F" ) report "Test failed" severity error;
 
 
->>>>>>> 29b6f6a (Merge problems)
 
     stop_the_clock <= true;
     wait;

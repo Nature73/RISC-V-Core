@@ -1,6 +1,6 @@
 #export PATH="/opt/homebrew/opt/llvm@19/bin:$PATH"
 
-RV_GCC=/opt/homebrew/opt/llvm@19/bin/clang
+RV_GCC=/usr/bin/clang-20
 RV_AS=riscv64-linux-gnu-as
 RV_AR=riscv64-linux-gnu-ar
 RV_LD=riscv64-linux-gnu-ld
@@ -12,4 +12,3 @@ GCCFLAGS=--target=riscv32 -march=rv32i -mabi=ilp32 -O2 -fno-stack-protector -w -
 LDFLAGS=-T linker.ld -m elf32lriscv -nostdlib
 
 firmware_words=../../tools/firmware_words/firmware_words
-

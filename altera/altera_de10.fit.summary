@@ -1,17 +1,17 @@
-Fitter Status : Successful - Tue Apr 14 12:23:55 2026
+Fitter Status : Successful - Fri Apr 17 14:20:37 2026
 Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 Revision Name : altera_de10
 Top-level Entity Name : riscv_soc_altera
 Family : MAX 10
 Device : 10M50DAF484C7G
 Timing Models : Final
-Total logic elements : 3,594 / 49,760 ( 7 % )
-    Total combinational functions : 3,533 / 49,760 ( 7 % )
-    Dedicated logic registers : 807 / 49,760 ( 2 % )
-Total registers : 807
+Total logic elements : 2,580 / 49,760 ( 5 % )
+    Total combinational functions : 2,561 / 49,760 ( 5 % )
+    Dedicated logic registers : 872 / 49,760 ( 2 % )
+Total registers : 872
 Total pins : 25 / 360 ( 7 % )
 Total virtual pins : 0
-Total memory bits : 526,336 / 1,677,312 ( 31 % )
+Total memory bits : 772,096 / 1,677,312 ( 46 % )
 Embedded Multiplier 9-bit elements : 0 / 288 ( 0 % )
 Total PLLs : 0 / 4 ( 0 % )
 UFM blocks : 0 / 1 ( 0 % )

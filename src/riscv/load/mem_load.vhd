@@ -35,16 +35,20 @@ architecture arch of mem_load is
 begin
 
    M_LOAD_W <= DATA_R;
-   M_LOAD_H <= DATA_R(15 downto 0) when (ADDR_R(1) = '0') else DATA_R(31 downto 16);
-   M_LOAD_B <= DATA_R(7 downto 0) when (ADDR_R(1 downto 0) = "00") else
-               DATA_R(15 downto 8) when (ADDR_R(1 downto 0) = "01") else
+   
+	M_LOAD_H <= DATA_R(15 downto 0) when (ADDR_R(1) = '0') else DATA_R(31 downto 16);
+   
+	M_LOAD_B <= DATA_R( 7 downto  0) when (ADDR_R(1 downto 0) = "00") else
+               DATA_R(15 downto  8) when (ADDR_R(1 downto 0) = "01") else
                DATA_R(23 downto 16) when (ADDR_R(1 downto 0) = "10") else
                DATA_R(31 downto 24);
-   M_LOAD_sign <= M_LOAD_B(7) when is_byte = '1' else M_LOAD_H(15) when is_half = '1' else '0';
+   
+	M_LOAD_sign <= M_LOAD_B(7)  when is_byte = '1' else
+	               M_LOAD_H(15) when is_half = '1' else '0';
 
    
-   data_value <= M_LOAD_W when (is_byte = '0' and is_half = '0') else
+   data_value <= M_LOAD_W                                 when (is_byte = '0' and is_half = '0') else
                  (repeat_bit(M_LOAD_sign, 16) & M_LOAD_H) when (is_byte = '0' and is_half = '1') else
-                 (repeat_bit(M_LOAD_sign, 24) & M_LOAD_B) when (is_byte = '1' and is_half = '0');
+                 (repeat_bit(M_LOAD_sign, 24) & M_LOAD_B);-- when (is_byte = '1' and is_half = '0');
 
 end arch;

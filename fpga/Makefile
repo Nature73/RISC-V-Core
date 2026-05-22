@@ -55,7 +55,8 @@ build_riscv_20k_a7:
 #
 
 load_riscv_cmod:
-	openFPGALoader -b cmoda7_35t riscv_soc.bit
+	vivado -mode batch -nolog -nojournal -source ./cmod_a7/cmod_a7_load.tcl
+#	openFPGALoader -b cmoda7_35t riscv_soc.bit
 
 flash_riscv_cmod_a7:
 	openFPGALoader -b cmoda7_35t riscv_soc.bit -f
