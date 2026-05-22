@@ -92,3 +92,8 @@ simu/riscv_soc_tb.ghw
 simu/trace.ghw
 simu/riscv_5stg_soc_tb
 .DS_Store
+
+asic/lib/
+asic/*.txt
+asic/*.log
+asic/*.svf

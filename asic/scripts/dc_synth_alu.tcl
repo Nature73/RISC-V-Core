@@ -20,7 +20,7 @@ analyze -library WORK -format vhdl { ../src/riscv/alu/alu.vhd     }
 
 #	COMPILATION NORMALE
 
-elaborate ALU -architecture ARCH -library DEFAULT
+elaborate ALU -architecture ARCH -library WORK
 #create_clock clk -name my_clock  -period 10
 compile -exact_map -area_effort med -power_effort med -auto_ungroup area
 uplevel #0 { report_cell } > area_report_normal_alu.txt

@@ -15,24 +15,35 @@ echo "link_library:      $link_library"
 echo "target_library:    $target_library"
 echo "symbol_library:    $symbol_library"
 
-analyze -library WORK -format vhdl { ../src/riscv_types.vhd  }
-#           ../src/mem_rom.vhd \
-#           ../src/mem_ram.vhd \
-analyze -library WORK -format vhdl { ../src/alu.vhd          }
-analyze -library WORK -format vhdl { ../src/decoder.vhd      }
-analyze -library WORK -format vhdl { ../src/registers.vhd    }
-analyze -library WORK -format vhdl { ../src/immediate.vhd    }
-analyze -library WORK -format vhdl { ../src/mem_store.vhd    }
-analyze -library WORK -format vhdl { ../src/mem_load.vhd     }
-analyze -library WORK -format vhdl { ../src/cnt_cycles.vhd   }
-analyze -library WORK -format vhdl { ../src/cnt_instr.vhd    }
-analyze -library WORK -format vhdl { ../src/csr_registers.vhd }
-analyze -library WORK -format vhdl { ../src/fetch.vhd        }
-analyze -library WORK -format vhdl { ../src/riscv.vhd        }
+analyze -library WORK -format vhdl {../src/riscv/riscv_types.vhd }
+analyze -library WORK -format vhdl {../src/riscv/riscv_config.vhd }
+analyze -library WORK -format vhdl {../src/riscv/rom/mem_rom_pkg.vhd }
+analyze -library WORK -format vhdl {../src/riscv/ram/mem_ram_pkg.vhd }
+analyze -library WORK -format vhdl {../src/riscv/alu/alu_pkg.vhd }
+analyze -library WORK -format vhdl {../src/riscv/decode/decoder_pkg.vhd }
+analyze -library WORK -format vhdl {../src/riscv/regs/registers_pkg.vhd }
+analyze -library WORK -format vhdl {../src/riscv/imm/immediate_pkg.vhd }
+analyze -library WORK -format vhdl {../src/riscv/store/mem_store_pkg.vhd }
+analyze -library WORK -format vhdl {../src/riscv/load/mem_load_pkg.vhd }
+analyze -library WORK -format vhdl {../src/riscv/csr/csr_registers_pkg.vhd }
+analyze -library WORK -format vhdl {../src/riscv/fetch/fetch_pkg.vhd }
+#analyze -library WORK -format vhdl {../src/riscv/rom/mem_rom.vhd }
+#analyze -library WORK -format vhdl {../src/riscv/ram/mem_ram.vhd }
+analyze -library WORK -format vhdl {../src/riscv/alu/alu.vhd }
+analyze -library WORK -format vhdl {../src/riscv/decode/decoder.vhd }
+analyze -library WORK -format vhdl {../src/riscv/regs/registers.vhd }
+analyze -library WORK -format vhdl {../src/riscv/imm/immediate.vhd }
+analyze -library WORK -format vhdl {../src/riscv/store/mem_store.vhd }
+analyze -library WORK -format vhdl {../src/riscv/load/mem_load.vhd }
+analyze -library WORK -format vhdl {../src/riscv/csr/cnt_cycles.vhd }
+analyze -library WORK -format vhdl {../src/riscv/csr/cnt_instr.vhd }
+analyze -library WORK -format vhdl {../src/riscv/csr/csr_registers.vhd }
+analyze -library WORK -format vhdl {../src/riscv/fetch/fetch.vhd }
+analyze -library WORK -format vhdl {../src/riscv/riscv.vhd }
 
 #	COMPILATION NORMALE
 
-elaborate RISCV -architecture ARCH -library DEFAULT
+elaborate RISCV -architecture ARCH -library WORK
 #create_clock clk -name my_clock  -period 10
 compile -exact_map -area_effort med -power_effort med -auto_ungroup area
 uplevel #0 { report_cell } > area_report_normal_riscv.txt
