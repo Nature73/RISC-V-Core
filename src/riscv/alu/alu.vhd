@@ -51,11 +51,11 @@ architecture arch of alu is
         return result;
     end;
 
-    function shift(B : std_logic_vector; N : natural; dec : integer; s : std_logic) return std_logic_vector is
+    function shift(B : std_logic_vector; N : natural; dec : std_logic_vector(4 downto 0);  s : std_logic) return std_logic_vector is
     variable x : std_logic_vector(32 downto 0);
     begin
         x := (s and B(31)) & B;
-        case std_logic_vector(to_unsigned(dec, 5)) is
+        case dec is
             when "00000" => return                         x(31 downto  0);
             when "00001" => return                         x(32 downto  1);
             when "00010" => return repeat_bit(x(32),  1) & x(32 downto  2);
@@ -168,7 +168,7 @@ begin
     rs1_v_r       <= reverse(rs1_v, 32);
     gauche        <= '1' when func3 = "001" else '0'; -- 1 à gauche, 0 à droite
     is_signed     <= '1' when (func3 = "101" and func7(5) = '1' ) else '0';
-    rs1_shifted   <= shift(rs1_v, 32,to_integer(unsigned(operande2(4 downto 0))),is_signed) when gauche = '0' else shift(rs1_v_r, 32,to_integer(unsigned(operande2(4 downto 0))),is_signed);
+    rs1_shifted   <= shift(rs1_v, 32,operande2(4 downto 0),is_signed) when gauche = '0' else shift(rs1_v_r, 32,operande2(4 downto 0),is_signed);
     rs1_shifted_r <= reverse(rs1_shifted,32);
 
     op_nim_sll  <= rs1_shifted_r ;

@@ -56,7 +56,7 @@ begin
     isLui_o       <= '1' when (instr_i(6 downto 0) = "0110111") else '0';
     isCustom_o    <= '1' when (instr_i(6 downto 0) = "0101111") else '0';
     isCSRRS_o     <= instr_is_csrrs(instr_i);
-    isEBreak_o    <= '1' when (instr_i(6 downto 0) = "1110011") else '0';
+    isEBreak_o    <= instr_is_ebreak( instr_i );
 
     funct3_o      <= instr_i(14 downto 12);
     funct7_o      <= instr_i(31 downto 25);

@@ -26,14 +26,18 @@ architecture arch of reg_forward is
    SIGNAL E_W_fwd_rs2 : STD_LOGIC;
 begin
 
-   --
-   --
-   --
-   --
-   --
-   --
-   --
-   --
-   --
+   E_M_fwd_rs1  <= EM_wbEnable AND DE_rs1Id_eq_EM_rdId;
+   E_W_fwd_rs1  <= MW_wbEnable AND DE_rs1Id_eq_MW_rdId;
+
+   E_M_fwd_rs2  <= EM_wbEnable AND DE_rs2Id_eq_EM_rdId;
+   E_W_fwd_rs2  <= MW_wbEnable AND DE_rs2Id_eq_MW_rdId;
+
+   E_rs1 <= EM_result when E_M_fwd_rs1 = '1' else
+            WB_data     when E_W_fwd_rs1 = '1' else 
+            DE_rs1;
+
+   E_rs2 <= EM_result when E_M_fwd_rs2 = '1' else 
+            WB_data     when E_W_fwd_rs2 = '1' else 
+            DE_rs2;
    
 end arch;

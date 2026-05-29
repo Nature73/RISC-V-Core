@@ -16,7 +16,7 @@ RV_RANLIB=riscv64-linux-gnu-ranlib
 
 ASFLAGS= -march=rv32i -mabi=ilp32
 # -fno-stack-protector -w -Wl,--no-relax -DTIME -DUSE_MYSTDLIB -fno-pic
-GCCFLAGS=-march=rv32i -mabi=ilp32 -O2 -DRISCV -fno-stack-protector
+GCCFLAGS=-march=rv32im -mabi=ilp32 -O2 -DRISCV -fno-stack-protector
 LDFLAGS=-T linker.ld -m elf32lriscv -nostdlib
 
 firmware_words=../../tools/firmware_words/firmware_words

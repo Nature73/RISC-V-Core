@@ -44,37 +44,30 @@ architecture arch of decoder is
 
 begin
    
-    isLoad_o       <= instr_is_load   ( instr_i ); -- '1' when FD_instr(6 downto 2) = "00000" ELSE '0'; -- type I
-    isStore_o      <= instr_is_store  ( instr_i ); -- '1' when FD_instr(6 downto 2) = "01000" ELSE '0';
-    isALUreg_o     <= instr_is_alu_reg( instr_i ); -- '1' when FD_instr(6 downto 2) = "01100" ELSE '0'; -- type R
-    isBranch_o     <= instr_is_branch ( instr_i ); -- '1' when FD_instr(6 downto 2) = "11000" ELSE '0';
-    isSYSTEM_o     <= instr_is_system ( instr_i ); -- '1' when FD_instr(6 downto 2) = "11100" ELSE '0';
-    isJAL_s        <= instr_is_jal    ( instr_i ); -- '1' when FD_instr(3)          = '1'     ELSE '0';
-    isJALR_s       <= instr_is_jalr   ( instr_i ); -- '1' when FD_instr(3)          = '1'     ELSE '0';
+    isLoad_o      <= '1' when (instr_i(6 downto 0) = "0000011") else '0';
+    isStore_o     <= '1' when (instr_i(6 downto 0) = "0100011") else '0';
+    isALUreg_o    <= '1' when (instr_i(6 downto 0) = "0110011") else '0';
+    isBranch_o    <= '1' when (instr_i(6 downto 0) = "1100011") else '0';
+    isSYSTEM_o    <= '1' when (instr_i(6 downto 0) = "1110011") else '0';
+    isJAL_o       <= '1' when (instr_i(6 downto 0) = "1101111") else '0';
+    isJALR_o      <= '1' when (instr_i(6 downto 0) = "1100111") else '0';
+    isJALorJALR_o <= '1' when (instr_i(6 downto 0) = "1101111" or instr_i(6 downto 0) = "1100111") else '0' ;
+    isAuipc_o     <= '1' when (instr_i(6 downto 0) = "0010111") else '0';
+    isLui_o       <= '1' when (instr_i(6 downto 0) = "0110111") else '0';
+    isCustom_o    <= '1' when (instr_i(6 downto 0) = "0101111") else '0';
+    isCSRRS_o     <= instr_is_csrrs(instr_i);
+    isEBreak_o    <= instr_is_ebreak( instr_i );
 
-    isJAL_o        <= isJAL_s;
-    isJALR_o       <= isJALR_s;
-    isJALorJALR_o  <= isJAL_s OR isJALR_s;
+    funct3_o      <= instr_i(14 downto 12);
+    funct7_o      <= instr_i(31 downto 25);
 
-    isAuipc_o      <= instr_is_auipc ( instr_i ); -- '1' when FD_instr(6 downto 2) = "11100" ELSE '0';
-    isLui_o        <= instr_is_lui   ( instr_i ); -- '1' when FD_instr(6 downto 2) = "11100" ELSE '0';
+    isByte_o      <= '1' when (instr_i(13 downto 12) = "00") else '0';
+    isHalf_o      <= '1' when (instr_i(13 downto 12) = "01") else '0';
 
-    isCustom_o     <= instr_is_custom( instr_i ); -- custom instruction
+    rs1_o         <= instr_i(19 downto 15);
+    rs2_o         <= instr_i(24 downto 20);
+    rdId_o        <= instr_i(11 downto 7);
+    csrId_o       <= instr_i(27) & instr_i(21);
 
-    isCSRRS_o      <= instr_is_csrrs ( instr_i );
-    isEBreak_o     <= instr_is_ebreak( instr_i );
-
-    isByte_o       <= funct3_is_byte( instr_funct3( instr_i ) ); --'1' when FD_instr(13 downto 12) = "00" ELSE '0';
-    isHalf_o       <= funct3_is_half( instr_funct3( instr_i ) ); --'1' when FD_instr(13 downto 12) = "01" ELSE '0';
-
-    funct3_o       <= instr_funct3( instr_i );
-    funct7_o       <= instr_funct7( instr_i );
-
-    csrId_o        <= instr_csr_id( instr_i );
-
-    rs1_o          <= instr_rs1_id( instr_i );
-    rs2_o          <= instr_rs2_id( instr_i );
-    rdId_o         <= instr_rd_id ( instr_i );
-
+    
 end arch;
- 

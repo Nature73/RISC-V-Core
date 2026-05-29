@@ -47,45 +47,63 @@ architecture arch of registers_pass is
    SIGNAL b_RD_id_we : STD_LOGIC;
    SIGNAL b_DATA_rd  : STD_LOGIC_VECTOR(31 DOWNTO 0);
 
-
-   
 begin
+
    process(CLOCK)
    begin
       if rising_edge(CLOCK) then
-         b_RS1_id <= RS1_id;
-         b_RS2_id <= RS2_id;
-         b_RD_id  <= RD_id;
-         b_RD_id_we <= RD_id_we;
-         b_DATA_rd <= DATA_rd;
+         if e_hold = '0' then
+            DATA_rs1 <= registerFile(to_integer(unsigned(RS1_id)));
+            DATA_rs2 <= registerFile(to_integer(unsigned(RS2_id)));
+         end if;
+         if RD_id_we = '1' then
+            registerFile(to_integer(unsigned(RD_id))) <= DATA_rd;
+         end if;
+         if RS1_id = RD_id then
+            DATA_rs1 <= DATA_rd;
+         end if;
+         if RS2_id = RD_id then
+            DATA_rs2 <= DATA_rd; 
+         end if;
       end if;
    end process;
    
-   process(clock)
-         variable addr : integer;
-   begin
-      if rising_edge(clock) then
-         if RD_id_we='1' then
-            addr := TO_INTEGER(unsigned(RD_id));
-            registerFile(addr) <= DATA_rd;
-         end if;
-      end if;
-   end process;
-
-   process(clock)
-   begin
-         if rising_edge(clock) then
-         if e_hold ='0' then
-            v_rs1 <= registerFile(to_integer(unsigned(RS1_id)));
-            v_rs2 <= registerFile(to_integer(unsigned(RS2_id)));
-         end if;
-         end if;
-   end process;
-
-   DATA_rs1 <= b_DATA_rd when ( b_RS1_id = b_RD_id and  b_RD_id_we ='1' ) else v_rs1;
-   DATA_rs2 <= b_DATA_rd when ( b_RS2_id = b_RD_id and  b_RD_id_we ='1' ) else v_rs2;
-
 end arch;
-   
-
  
+-- begin
+--    process(CLOCK)
+--    begin
+--       if rising_edge(CLOCK) then
+--          b_RS1_id <= RS1_id;
+--          b_RS2_id <= RS2_id;
+--          b_RD_id  <= RD_id;
+--          b_RD_id_we <= RD_id_we;
+--          b_DATA_rd <= DATA_rd;
+--       end if;
+--    end process;
+   
+--    process(clock)
+--          variable addr : integer;
+--    begin
+--       if rising_edge(clock) then
+--          if RD_id_we='1' then
+--             addr := TO_INTEGER(unsigned(RD_id));
+--             registerFile(addr) <= DATA_rd;
+--          end if;
+--       end if;
+--    end process;
+
+--    process(clock)
+--    begin
+         if rising_edge(clock) then
+--          if e_hold ='0' then
+--             v_rs1 <= registerFile(to_integer(unsigned(RS1_id)));
+--             v_rs2 <= registerFile(to_integer(unsigned(RS2_id)));
+--          end if;
+         end if;
+--    end process;
+
+--    DATA_rs1 <= b_DATA_rd when ( b_RS1_id = b_RD_id and  b_RD_id_we ='1' ) else v_rs1;
+--    DATA_rs2 <= b_DATA_rd when ( b_RS2_id = b_RD_id and  b_RD_id_we ='1' ) else v_rs2;
+
+-- end arch;
